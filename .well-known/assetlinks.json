@@ -8,7 +8,8 @@
             "package_name": "com.madt.zedos",
             "sha256_cert_fingerprints": [
                 "e7:2d:89:48:bb:a0:11:46:97:76:6e:ee:47:a9:83:d4:17:a0:8a:b7:f1:6a:b8:1f:c1:c6:92:79:e5:29:7e:10"
-            ]
+            ],
+           "host": "www.chiba-le.com" 
         }
     }
 ]
