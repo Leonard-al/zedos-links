@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting to App...</title>
+  <script>
+    // Get referrer ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const referrer = urlParams.get('referrer');
+
+    // Build Play Store link with referrer
+    const packageName = 'com.madt.zedos';
+    const playStoreUrl = `https://play.google.com/store/apps/details?id=${packageName}&referrer=referrer%3D${encodeURIComponent(referrer || '')}`;
+
+    // Redirect after 1 second
+    setTimeout(() => {
+      window.location.href = playStoreUrl;
+    }, 1000);
+  </script>
+</head>
+<body>
+  <p>Redirecting to the Play Store...</p>
+</body>
+</html>
