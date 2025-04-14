@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirecting...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const data = params.get("data");
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (isAndroid) {
+      // Try opening the app
+      window.location = `intent://product?data=${data}#Intent;scheme=https;package=com.yourapp.package;end`;
+
+      // Fallback to Play Store with referrer
+      setTimeout(() => {
+        const encodedData = encodeURIComponent(`data=${data}`);
+        window.location = `https://play.google.com/store/apps/details?id=com.yourapp.package&referrer=${encodedData}`;
+      }, 2000);
+    } else if (isiOS) {
+      // iOS fallback
+      window.location = "https://apps.apple.com/app/your-ios-app-id";
+    } else {
+      // Desktop fallback
+      document.write("Please open this link on your phone.");
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
