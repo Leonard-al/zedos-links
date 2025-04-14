@@ -11,16 +11,16 @@
 
     if (isAndroid) {
       // Try opening the app
-      window.location = `intent://product?data=${data}#Intent;scheme=https;package=com.yourapp.package;end`;
+      window.location = `intent://product?data=${data}#Intent;scheme=https;package=com.madt.zedos;end`;
 
       // Fallback to Play Store with referrer
       setTimeout(() => {
         const encodedData = encodeURIComponent(`data=${data}`);
-        window.location = `https://play.google.com/store/apps/details?id=com.yourapp.package&referrer=${encodedData}`;
+        window.location = `https://play.google.com/store/apps/details?id=com.madt.zedos&referrer=${encodedData}`;
       }, 2000);
     } else if (isiOS) {
       // iOS fallback
-      window.location = "https://apps.apple.com/app/your-ios-app-id";
+      window.location = "https://apps.apple.com/app/com.madt.zedos";
     } else {
       // Desktop fallback
       document.write("Please open this link on your phone.");
