@@ -6,21 +6,28 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const data = params.get("data");
+    const path = window.location.pathname; // get the path like /product or /store
+
     const isAndroid = /Android/i.test(navigator.userAgent);
     const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (isAndroid) {
-      // Try opening the app
-      window.location = `intent://product?data=${data}#Intent;scheme=https;package=com.madt.zedos;end`;
+      let pagePath = "product"; // default to product
+      if (path.includes("store")) {
+        pagePath = "store";
+      }
+
+      // Try opening the app first
+      window.location = `intent://${pagePath}?data=${data}#Intent;scheme=https;package=com.madt.zedos;end`;
 
       // Fallback to Play Store with referrer
       setTimeout(() => {
-        const encodedData = encodeURIComponent(`data=${data}`);
-        window.location = `https://play.google.com/store/apps/details?id=com.madt.zedos&referrer=${encodedData}`;
+        const encodedData = encodeURIComponent(`data=${data}&page=${pagePath}`);
+        window.location = `https://play.google.com/store/apps/details?id=com.yourapp.package&referrer=${encodedData}`;
       }, 2000);
     } else if (isiOS) {
       // iOS fallback
-      window.location = "https://apps.apple.com/app/com.madt.zedos";
+      window.location = "https://apps.apple.com/app/your-ios-app-id";
     } else {
       // Desktop fallback
       document.write("Please open this link on your phone.");
@@ -31,3 +38,4 @@
   <p>Redirecting...</p>
 </body>
 </html>
+
