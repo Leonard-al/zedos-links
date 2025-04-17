@@ -4,41 +4,31 @@
   <title>Redirecting...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const data = params.get("data");
-    const path = window.location.pathname; // e.g., /product or /store
+  const params = new URLSearchParams(window.location.search);
+const data = params.get("data");
+let pagePath = params.get("path") || "home"; // Default to home if missing
 
-    const isAndroid = /Android/i.test(navigator.userAgent);
-    const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+const isAndroid = /Android/i.test(navigator.userAgent);
+const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    if (isAndroid) {
-      let pagePath = ""; // default to empty
-      if (path.includes("store")) {
-        pagePath = "store";
-      } else if (path.includes("product")) {
-        pagePath = "product";
-      }
+if (isAndroid) {
+  const pageQuery = `${pagePath}?data=${data}`;
+  window.location = `intent://${pageQuery}#Intent;scheme=https;package=com.madt.zedos;end`;
 
-      // Try opening the app first
-      const pageQuery = pagePath ? `${pagePath}?data=${data}` : `home?data=${data}`;
-      window.location = `intent://${pageQuery}#Intent;scheme=https;package=com.madt.zedos;end`;
-
-      // Fallback to Play Store with proper referrer
-      setTimeout(() => {
-        let referrerParams = `data=${encodeURIComponent(data)}`;
-        if (pagePath) {
-          referrerParams += `&page=${encodeURIComponent(pagePath)}`;
-        }
-        window.location = `https://play.google.com/store/apps/details?id=com.madt.zedos&referrer=${referrerParams}`;
-      }, 2000);
-
-    } else if (isiOS) {
-      // iOS fallback
-      window.location = "https://apps.apple.com/app/com.madt.zedos";
-    } else {
-      // Desktop fallback
-      document.write("Please open this link on your phone.");
+  setTimeout(() => {
+    let referrerParams = `data=${encodeURIComponent(data)}`;
+    if (pagePath) {
+      referrerParams += `&page=${encodeURIComponent(pagePath)}`;
     }
+    window.location = `https://play.google.com/store/apps/details?id=com.madt.zedos&referrer=${referrerParams}`;
+  }, 2000);
+
+} else if (isiOS) {
+  window.location = "https://apps.apple.com/app/com.madt.zedos";
+} else {
+  document.write("Please open this link on your phone.");
+}
+
   </script>
 </head>
 <body>
