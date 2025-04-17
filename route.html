@@ -12,9 +12,11 @@
     const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (isAndroid) {
-      let pagePath = "product"; // default to product
+      let pagePath = "home"; // default to product
       if (path.includes("store")) {
         pagePath = "store";
+      }else if (path.includes("product"){
+         pagePath = "product";
       }
 
       // Try opening the app first
