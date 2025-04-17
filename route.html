@@ -3,38 +3,35 @@
 <head>
   <title>Redirecting...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script>
+<script>
   const params = new URLSearchParams(window.location.search);
-const data = params.get("data");
-let pagePath = params.get("path") || "home"; // Default to home if missing
+  const data = params.get("data") || "";
+  const path = window.location.pathname.replace(/^\/+/, ''); // remove leading /
+  
+  const isAndroid = /Android/i.test(navigator.userAgent);
+  const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-const isAndroid = /Android/i.test(navigator.userAgent);
-const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (isAndroid) {
+    const intentUrl = `intent://${path}?data=${encodeURIComponent(data)}#Intent;scheme=https;package=com.madt.zedos;end`;
 
-if (isAndroid) {
-  const pageQuery = `${pagePath}?data=${data}`;
-  window.location = `intent://${pageQuery}#Intent;scheme=https;package=com.madt.zedos;end`;
+    const fallback = setTimeout(() => {
+      const playStoreUrl = `https://play.google.com/store/apps/details?id=com.madt.zedos&referrer=${encodeURIComponent(`data=${data}`)}`;
+      window.location.assign(playStoreUrl);
+    }, 2000);
 
- let fallbackTimeout = setTimeout(() => {
-  const encodedData = encodeURIComponent(`data=${data}&page=${pagePath}`);
-  window.location = `https://play.google.com/store/apps/details?id=com.madt.zedos&referrer=${encodedData}`;
-}, 2000);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') {
+        clearTimeout(fallback);
+      }
+    });
 
-// If page is hidden (user left the browser to app), cancel fallback
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'hidden') {
-    clearTimeout(fallbackTimeout);
+    window.location.assign(intentUrl);
+  } else if (isiOS) {
+    window.location.assign("https://apps.apple.com/app/com.madt.zedos");
+  } else {
+    document.body.innerHTML = "Please open this link on your phone.";
   }
-});
-
-
-} else if (isiOS) {
-  window.location = "https://apps.apple.com/app/com.madt.zedos";
-} else {
-  document.write("Please open this link on your phone.");
-}
-
-  </script>
+</script>
 </head>
 <body>
   <p>Redirecting...</p>
