@@ -1,41 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Redirecting...</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const data = params.get("data") || "";
-  const path = window.location.pathname.replace(/^\/+/, ''); // remove leading /
-  
-  const isAndroid = /Android/i.test(navigator.userAgent);
-  const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const path = params.get("path"); // e.g., "store" or "product"
+    const data = params.get("data"); // your encoded data
 
-  if (isAndroid) {
-    const intentUrl = `intent://${path}?data=${encodeURIComponent(data)}#Intent;scheme=https;package=com.madt.zedos;end`;
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    const fallback = setTimeout(() => {
-      const playStoreUrl = `https://play.google.com/store/apps/details?id=com.madt.zedos&referrer=${encodeURIComponent(`data=${data}`)}`;
-      window.location.assign(playStoreUrl);
-    }, 2000);
-
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'hidden') {
-        clearTimeout(fallback);
+    if (isAndroid) {
+      let pagePath = "home"; // default if path is missing
+      if (path) {
+        pagePath = path; // use the one from URL
       }
-    });
 
-    window.location.assign(intentUrl);
-  } else if (isiOS) {
-    window.location.assign("https://apps.apple.com/app/com.madt.zedos");
-  } else {
-    document.body.innerHTML = "Please open this link on your phone.";
-  }
-</script>
+      if (data) {
+        // Open app with data
+        window.location.assign(`intent://${pagePath}?data=${data}#Intent;scheme=https;package=com.madt.zedos;end`);
+      } else {
+        // If no data param
+        window.location.assign(`intent://${pagePath}#Intent;scheme=https;package=com.madt.zedos;end`);
+      }
+
+      // Fallback after 2 seconds
+      setTimeout(() => {
+        let fallbackUrl = `https://play.google.com/store/apps/details?id=com.madt.zedos`;
+        if (data) {
+          fallbackUrl += `&referrer=data=${encodeURIComponent(data)}&page=${pagePath}`;
+        }
+        window.location.href = fallbackUrl;
+      }, 2000);
+
+    } else if (isiOS) {
+      // iOS fallback
+      window.location.href = "https://apps.apple.com/app/com.madt.zedos";
+    } else {
+      // Desktop
+      document.write("Please open this link on your phone.");
+    }
+  </script>
 </head>
 <body>
   <p>Redirecting...</p>
 </body>
 </html>
+
 
 
