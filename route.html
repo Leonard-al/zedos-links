@@ -6,27 +6,32 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const data = params.get("data");
-    const path = window.location.pathname; // get the path like /product or /store
+    const path = window.location.pathname; // e.g., /product or /store
 
     const isAndroid = /Android/i.test(navigator.userAgent);
     const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (isAndroid) {
-      let pagePath = "home"; // default to product
+      let pagePath = ""; // default to empty
       if (path.includes("store")) {
         pagePath = "store";
-      }else if (path.includes("product"){
-         pagePath = "product";
+      } else if (path.includes("product")) {
+        pagePath = "product";
       }
 
       // Try opening the app first
-      window.location = `intent://${pagePath}?data=${data}#Intent;scheme=https;package=com.madt.zedos;end`;
+      const pageQuery = pagePath ? `${pagePath}?data=${data}` : `home?data=${data}`;
+      window.location = `intent://${pageQuery}#Intent;scheme=https;package=com.madt.zedos;end`;
 
-      // Fallback to Play Store with referrer
+      // Fallback to Play Store with proper referrer
       setTimeout(() => {
-        const encodedData = encodeURIComponent(`data=${data}&page=${pagePath}`);
-        window.location = `https://play.google.com/store/apps/details?id=com.madt.zedos&referrer=${encodedData}`;
+        let referrerParams = `data=${encodeURIComponent(data)}`;
+        if (pagePath) {
+          referrerParams += `&page=${encodeURIComponent(pagePath)}`;
+        }
+        window.location = `https://play.google.com/store/apps/details?id=com.madt.zedos&referrer=${referrerParams}`;
       }, 2000);
+
     } else if (isiOS) {
       // iOS fallback
       window.location = "https://apps.apple.com/app/com.madt.zedos";
@@ -40,4 +45,5 @@
   <p>Redirecting...</p>
 </body>
 </html>
+
 
