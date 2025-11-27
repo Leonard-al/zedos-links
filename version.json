@@ -1,8 +1,8 @@
 {
-  "latest_version": "1.0.36",
+  "latest_version": "1.0.39",
   "force_update": false,
   "update_url_android": "https://play.google.com/store/apps/details?id=com.madt.zedos",
   "update_url_ios": "https://apps.apple.com/app/id1234567890",
-  "animation_url": null,
+  "animation_url": "https://lottie.host/embed/97cff3da-2585-4d0a-badb-6f250f2be768/xLwuYntvcz.lottie",
   "whats_new": "🛍 Better Product Control for Sellers\n• Edit price tiers with ease\n• Update delivery options instantly\n• Manage sizes and product details more smoothly\n\n💬 Smarter, Richer Chat\n• Send and receive images in chat — share product photos or proof of payment easily\n• Improved delivery of chat notifications so you never miss a message\n\n👤 Improved Profile Editing\n• You can now update your first and last name directly from your profile\n\n…and many more improvements to make your Zedos experience faster, smoother, and more enjoyable! 🚀"
 }
