@@ -1,8 +1,8 @@
 {
-  "latest_version": "1.0.18",
+  "latest_version": "1.0.19",
   "force_update": true,
   "update_url_android": "https://play.google.com/store/apps/details?id=com.leonard.kunda.landnant",
   "update_url_ios": "https://apps.apple.com/app",
   "animation_url": "https://lottie.host/1c1cf82f-f2c9-4c44-b153-54580297da04/jbxuNiyMw4.json",
-  "whats_new": "Fixed a lot of bugs"
+  "whats_new": "Fixed a lot of bugs, design improvement in some sceens, added the Safety policy"
 }
