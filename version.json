@@ -1,8 +1,8 @@
 {
-  "latest_version": "1.0.43",
+  "latest_version": "1.0.44",
   "force_update": true,
   "update_url_android": "https://play.google.com/store/apps/details?id=com.madt.zedos",
   "update_url_ios": "https://apps.apple.com/app/id1234567890",
   "animation_url": "https://lottie.host/1c1cf82f-f2c9-4c44-b153-54580297da04/jbxuNiyMw4.json",
-  "whats_new": "We have made some more improvements,\nbug fixing,\nchat with the admin within the app 🚀"
+  "whats_new": "We have made some more improvements,\nbug fixing,\nUI and UX design improvement 🚀"
 }
