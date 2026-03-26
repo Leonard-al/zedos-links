@@ -17,9 +17,24 @@
     footer{margin-top:20px;color:var(--muted);font-size:13px}
     .meta{font-size:13px;color:var(--muted);margin-bottom:14px}
     .highlight-box{background:#f0fdfc;border-left:4px solid var(--accent);border-radius:6px;padding:14px 18px;margin:12px 0 16px}
-    .highlight-box p{margin:0;font-size:14px;color:#065f5e}
+    .highlight-box p{margin:0 0 6px;font-size:14px;color:#065f5e}
+    .highlight-box p:last-child{margin-bottom:0}
     .highlight-box strong{color:#0ea5a4}
+    .warning-box{background:#fff7ed;border-left:4px solid #f97316;border-radius:6px;padding:14px 18px;margin:12px 0 16px}
+    .warning-box p{margin:0 0 6px;font-size:14px;color:#7c2d12}
+    .warning-box p:last-child{margin-bottom:0}
+    .warning-box strong{color:#ea580c}
+    .critical-box{background:#fef2f2;border-left:4px solid #ef4444;border-radius:6px;padding:16px 18px;margin:16px 0}
+    .critical-box p{margin:0 0 8px;font-size:14px;color:#7f1d1d}
+    .critical-box p:last-child{margin-bottom:0}
+    .critical-box strong{color:#dc2626}
+    .critical-box .title{font-size:15px;font-weight:700;color:#b91c1c;margin-bottom:10px}
     .badge{display:inline-block;background:#0ea5a4;color:#fff;font-size:11px;font-weight:600;letter-spacing:.05em;padding:2px 8px;border-radius:20px;vertical-align:middle;margin-left:6px}
+    .badge-red{display:inline-block;background:#ef4444;color:#fff;font-size:11px;font-weight:600;letter-spacing:.05em;padding:2px 8px;border-radius:20px;vertical-align:middle;margin-left:6px}
+    .step-row{display:flex;align-items:flex-start;gap:14px;margin:10px 0}
+    .step-num{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:#0ea5a4;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+    .step-text{font-size:14px;color:#374151;line-height:1.6}
+    .step-text strong{color:#111827}
   </style>
 </head>
 <body>
@@ -51,14 +66,14 @@
       <h2>4. Payments <span class="badge">Updated</span></h2>
 
       <div class="highlight-box">
-        <p>💳 <strong>Mobile money payments are now live on Zedos.</strong> We strongly encourage all buyers to pay through the Zedos in-app payment system for a safer, more protected shopping experience. In-app payments include buyer protection — your money is held securely until you confirm you have received your order.</p>
+        <p>💳 <strong>Mobile money payments are now live on Zedos.</strong> We strongly encourage all buyers to pay through the Zedos in-app payment system for a safer, more protected shopping experience.</p>
+        <p>🔒 <strong>Your money is held securely in escrow</strong> and is <strong>only released to the seller once you confirm that you have received your order</strong> in good condition. You are always in control of when the seller gets paid.</p>
       </div>
 
       <ul>
         <li>Payments on Zedos are made via <strong>mobile money</strong> through the in-app payment system. Buyers are strongly encouraged to use this method for all transactions.</li>
         <li><strong>Escrow protection:</strong> When you pay in-app, your payment is temporarily held by Zedos and is <em>not</em> released to the seller until you confirm that you have received your order in good condition.</li>
         <li>Once you confirm receipt of your order, the held funds are released to the seller promptly.</li>
-        <li>If you do not confirm receipt within <strong>48 hours</strong> of the recorded delivery, Zedos may prompt you to confirm or raise a dispute. Failure to respond may result in the funds being automatically released to the seller.</li>
         <li>Buyers should never pay outside the Zedos platform. Payments made directly to sellers (e.g., cash or external transfers) are not covered by Zedos buyer protection and are made entirely at the buyer's own risk.</li>
         <li>Always keep in-app payment receipts and confirmation records for your reference.</li>
       </ul>
@@ -71,61 +86,100 @@
         <li>Orders unanswered by the seller for more than <strong>7 days</strong> may be automatically closed.</li>
       </ul>
 
-      <h2>6. Cancellations and Refunds</h2>
+      <h2>6. Confirming Receipt, Disputes &amp; Fund Release <span class="badge-red">Important</span></h2>
+
+      <p>How the payment release process works, step by step:</p>
+
+      <div class="step-row">
+        <div class="step-num">1</div>
+        <div class="step-text">You place an order and pay through the Zedos in-app payment system. Your funds are <strong>held securely in escrow</strong> — the seller does not receive the money yet.</div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">2</div>
+        <div class="step-text">Your order is delivered. You have <strong>48 hours</strong> from the time of delivery to either <strong>confirm receipt</strong> or <strong>open a dispute</strong> if there is a problem with your order.</div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">3</div>
+        <div class="step-text">If you are satisfied, tap <strong>"Confirm Receipt"</strong> in the app. Your funds are then released to the seller immediately. <strong>Once released, the payment is final and cannot be refunded.</strong></div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">4</div>
+        <div class="step-text">If there is a problem — wrong item, damaged goods, item not as described — <strong>do not confirm receipt</strong>. Instead, <strong>open a dispute within 48 hours</strong> of receiving the item so Zedos can review the case before any funds are released.</div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">5</div>
+        <div class="step-text">If you neither confirm receipt nor open a dispute within <strong>48 hours</strong>, Zedos will assume you are satisfied with your order and the funds will be <strong>automatically released to the seller</strong>.</div>
+      </div>
+
+      <div class="critical-box">
+        <p class="title">⚠️ Once Funds Are Released — No Refunds</p>
+        <p><strong>Funds released to the seller are final.</strong> Once you confirm receipt of your order, or once the 48-hour window closes without a dispute, the payment is permanently transferred to the seller and <strong>Zedos cannot issue a refund</strong>.</p>
+        <p>If you have any issue with your order — damaged item, wrong product, item not as described — <strong>you must open a dispute within 48 hours of receiving the item</strong>, before confirming receipt and before the release window closes. Disputes raised after funds have been released will not be eligible for a refund.</p>
+        <p><strong>Do not confirm receipt until you are completely satisfied with your order.</strong></p>
+      </div>
+
+      <div class="warning-box">
+        <p>⏱️ <strong>48-Hour Rule — Do Not Miss This Window</strong></p>
+        <p>If you receive your order and have a problem with it, you have exactly <strong>48 hours</strong> to open a dispute in the app. After this window, Zedos will treat your order as completed and satisfactorily received, and funds will be released to the seller with no possibility of a refund through Zedos.</p>
+      </div>
+
+      <h2>7. Cancellations and Refunds</h2>
       <ul>
-        <li>If you paid via the Zedos in-app payment system and your order is cancelled before delivery, your held payment will be refunded to your original payment method.</li>
-        <li>If an item arrives damaged, incorrect, or not as described, raise a dispute within <strong>48 hours</strong> of delivery confirmation. Zedos will review the case and the held payment may be refunded at Zedos' discretion.</li>
+        <li>If you paid via the Zedos in-app payment system and your order is cancelled <strong>before delivery</strong>, your held payment will be refunded to your original payment method.</li>
+        <li>If an item arrives damaged, incorrect, or not as described, <strong>do not confirm receipt</strong> — raise a dispute within <strong>48 hours</strong> of delivery. Zedos will review the case and the held payment may be refunded at Zedos' discretion.</li>
+        <li><strong>Once you confirm receipt of an order, or once the 48-hour window closes, funds are released and no refund can be processed.</strong> Always inspect your order carefully before confirming.</li>
         <li>Cancellations and refunds for orders paid outside the platform are handled directly between buyer and seller; Zedos does not guarantee such refunds but may assist in unresolved disputes.</li>
       </ul>
 
-      <h2>7. Disputes and Complaints</h2>
+      <h2>8. Disputes and Complaints</h2>
       <ul>
         <li>Buyers should first contact the seller to resolve disputes.</li>
-        <li>If unresolved, Zedos may review the issue and take action where appropriate.</li>
-        <li>Disputes relating to in-app payments must be raised within <strong>48 hours</strong> of delivery confirmation to be eligible for Zedos mediation.</li>
+        <li>If unresolved, open a formal dispute through the Zedos app. Zedos may review the issue and take action where appropriate.</li>
+        <li><strong>Disputes relating to in-app payments must be raised within 48 hours of receiving the item</strong> — and before confirming receipt — to be eligible for Zedos mediation and a potential refund.</li>
+        <li>Disputes raised after funds have already been released to the seller are not eligible for a Zedos-mediated refund.</li>
       </ul>
 
-      <h2>8. Buyer Conduct</h2>
+      <h2>9. Buyer Conduct</h2>
       <ul>
         <li>Communicate respectfully and avoid false claims or harassment.</li>
         <li>Do not attempt to defraud sellers or misuse the rating system.</li>
         <li>Falsely claiming non-receipt of an order to delay or reverse a legitimate payment is a serious violation and may result in account suspension.</li>
       </ul>
 
-      <h2>9. Safety and Fraud Prevention</h2>
+      <h2>10. Safety and Fraud Prevention</h2>
       <ul>
-        <li>Always use the Zedos in-app payment system — it is the safest way to pay and includes buyer protection.</li>
+        <li>Always use the Zedos in-app payment system — it is the safest way to pay and includes buyer protection through escrow.</li>
         <li>Verify seller profiles and product details before placing an order.</li>
         <li>Report suspicious listings or behavior to <strong>support@zedosapp.com</strong>.</li>
       </ul>
 
-      <h2>10. Zedos' Role and Limitation of Liability</h2>
+      <h2>11. Zedos' Role and Limitation of Liability</h2>
       <ul>
         <li>Zedos is a neutral platform and not a party to transactions. Purchases are at the buyer's own risk.</li>
         <li>Zedos is not liable for product quality, delivery performance, or indirect losses.</li>
         <li>Zedos acts as an escrow intermediary solely for the purpose of temporarily holding in-app payments; this does not make Zedos a party to the underlying sale agreement.</li>
       </ul>
 
-      <h2>11. Account Suspension or Termination</h2>
+      <h2>12. Account Suspension or Termination</h2>
       <ul>
         <li>Zedos may suspend or close buyer accounts for fraud, policy violations, or misuse.</li>
       </ul>
 
-      <h2>12. Compliance with Zambian Law</h2>
+      <h2>13. Compliance with Zambian Law</h2>
       <ul>
         <li>Buyers must comply with applicable laws including consumer protection and electronic transactions acts.</li>
       </ul>
 
-      <h2>13. Updates to These Terms</h2>
+      <h2>14. Updates to These Terms</h2>
       <ul>
         <li>Terms may be amended; significant changes will be communicated via the app or email.</li>
       </ul>
 
-      <h2>14. Contact</h2>
+      <h2>15. Contact</h2>
       <p>Questions or complaints: <br>
       <strong>support@zedosapp.com</strong><br>Lusaka, Zambia</p>
 
-      <h2>15. Credit Policy and Unpaid Orders</h2>
+      <h2>16. Credit Policy and Unpaid Orders</h2>
       <ul>
         <li>Zedos may record unpaid or unfulfilled orders within its system as part of internal buyer reliability tracking.</li>
         <li>Repeated failure to pay after collecting an item may result in temporary suspension of your account or restriction from placing future orders.</li>
