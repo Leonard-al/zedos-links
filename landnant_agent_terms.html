@@ -3,215 +3,563 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agent Terms & Conditions</title>
+  <title>Agent Terms & Conditions — LandNant</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --primary: #00897b; /* teal-like */
-      --secondary: #f5f7f8;
-      --text-dark: #222;
-      --text-light: #555;
-      --border: #e0e0e0;
-      --danger: #d32f2f;
+      --teal:        #00897B;
+      --teal-dark:   #00695C;
+      --teal-light:  #E0F2F1;
+      --navy:        #0D1B2A;
+      --gold:        #C9A84C;
+      --surface:     #F0F4F4;
+      --card:        #FFFFFF;
+      --border:      #ECF0F1;
+      --text-primary:#0D1B2A;
+      --text-sec:    #546E7A;
+      --success:     #2E7D32;
+      --success-bg:  #E8F5E9;
+      --danger:      #C62828;
+      --danger-bg:   #FFEBEE;
+      --warning:     #F59E0B;
+      --warning-bg:  #FFFBEB;
     }
 
-    * {
-      box-sizing: border-box;
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      margin: 0;
-      background: var(--secondary);
-      color: var(--text-dark);
-      line-height: 1.7;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--surface);
+      color: var(--text-primary);
+      line-height: 1.75;
     }
 
-    .container {
-      max-width: 900px;
+    /* ── Hero Header ── */
+    .hero {
+      background: linear-gradient(135deg, #004D40 0%, #00897B 60%, #26A69A 100%);
+      padding: 56px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 260px; height: 260px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+
+    .hero-inner {
+      max-width: 860px;
       margin: 0 auto;
-      padding: 24px 16px 60px;
+      position: relative;
+      z-index: 1;
     }
 
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+
+    .logo-name {
+      color: rgba(255,255,255,0.95);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 5vw, 42px);
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      font-weight: 400;
+    }
+
+    .hero p.lead {
+      color: rgba(255,255,255,0.78);
+      font-size: 15.5px;
+      max-width: 560px;
+      font-weight: 300;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .meta-pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 6px 14px;
+      color: rgba(255,255,255,0.88);
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    /* ── Layout ── */
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+      position: relative;
+      margin-top: -40px;
+    }
+
+    /* ── Section Card ── */
     .card {
-      background: #fff;
-      border-radius: 14px;
-      padding: 28px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      background: var(--card);
+      border-radius: 20px;
+      padding: 36px 36px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.45s ease forwards;
     }
 
-    h1 {
-      color: var(--primary);
-      font-size: 28px;
-      margin-bottom: 8px;
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .subtitle {
-      color: var(--text-light);
-      font-size: 15px;
-      margin-bottom: 24px;
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.10s; }
+    .card:nth-child(3) { animation-delay: 0.15s; }
+    .card:nth-child(4) { animation-delay: 0.20s; }
+    .card:nth-child(5) { animation-delay: 0.25s; }
+    .card:nth-child(6) { animation-delay: 0.30s; }
+    .card:nth-child(7) { animation-delay: 0.35s; }
+    .card:nth-child(8) { animation-delay: 0.40s; }
+    .card:nth-child(9) { animation-delay: 0.45s; }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
     }
 
-    h2 {
-      margin-top: 32px;
-      margin-bottom: 12px;
+    .section-num {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
       font-size: 20px;
-      color: var(--primary);
+      color: var(--text-primary);
+      font-weight: 400;
+      line-height: 1.3;
     }
 
-    p {
-      margin: 10px 0;
-      color: var(--text-light);
+    .section-icon {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: var(--teal-light);
+      color: var(--teal);
+      border-radius: 10px;
+      font-size: 17px;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
     }
 
-    ul {
-      margin: 12px 0 12px 20px;
-      color: var(--text-light);
+    p.body-text {
+      color: var(--text-sec);
+      font-size: 14.5px;
+      line-height: 1.75;
+      margin-bottom: 12px;
     }
 
-    li {
+    ul.styled {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0;
+    }
+
+    ul.styled li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text-sec);
+      font-size: 14.5px;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    ul.styled li:last-child { border-bottom: none; }
+
+    ul.styled li::before {
+      content: '✓';
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      background: var(--success-bg);
+      color: var(--success);
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+    }
+
+    /* ── Callout Blocks ── */
+    .callout {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 16px 0;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .callout-icon {
+      font-size: 18px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .callout.info {
+      background: var(--teal-light);
+      border-left: 4px solid var(--teal);
+      color: #004D40;
+    }
+
+    .callout.warning {
+      background: var(--danger-bg);
+      border-left: 4px solid var(--danger);
+      color: #7B1515;
+    }
+
+    .callout.tip {
+      background: var(--warning-bg);
+      border-left: 4px solid var(--warning);
+      color: #7A4F00;
+    }
+
+    /* ── Two-col grid ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .mini-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .mini-card .mini-icon {
+      font-size: 22px;
       margin-bottom: 8px;
     }
 
-    .highlight {
-      background: #e0f2f1;
-      border-left: 4px solid var(--primary);
-      padding: 14px 16px;
-      border-radius: 8px;
-      margin: 20px 0;
-      color: #004d40;
-      font-weight: 500;
+    .mini-card .mini-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
     }
 
-    .warning {
-      background: #fdecea;
-      border-left: 4px solid var(--danger);
-      padding: 14px 16px;
-      border-radius: 8px;
-      margin: 20px 0;
-      color: #8a1f1f;
-      font-weight: 500;
+    .mini-card p {
+      font-size: 12.5px;
+      color: var(--text-sec);
+      line-height: 1.55;
     }
 
-    .footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
+    /* ── Footer ── */
+    .footer-card {
+      background: linear-gradient(135deg, #004D40, #00695C);
+      border-radius: 20px;
+      padding: 36px;
       text-align: center;
-      color: var(--text-light);
-      font-size: 14px;
+      margin-top: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 150px; height: 150px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+
+    .footer-card h3 {
+      font-family: 'DM Serif Display', serif;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .footer-card p {
+      color: rgba(255,255,255,0.72);
+      font-size: 13.5px;
+      max-width: 480px;
+      margin: 0 auto 20px;
+      line-height: 1.65;
+    }
+
+    .footer-meta {
+      color: rgba(255,255,255,0.45);
+      font-size: 12px;
+      margin-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 16px;
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 24px;
-      }
-
-      h2 {
-        font-size: 18px;
-      }
-
-      .card {
-        padding: 20px;
-      }
+      .card { padding: 24px 20px; }
+      .two-col { grid-template-columns: 1fr; }
+      .meta-row { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="card">
-      <h1>Agent Terms & Conditions</h1>
-      <p class="subtitle">
-        These terms are designed to protect genuine agents, tenants, and landlords,
-        and to promote transparency and trust in the rental market.
-      </p>
 
-      <h2>1. Agent Verification & Landlord Relationship</h2>
-      <p>
-        Every agent must undergo a verification process before being allowed to list properties.
-      </p>
-      <ul>
-        <li>You must be able to prove that you are well known, trusted, and authorized by the landlord.</li>
-        <li>This may include landlord confirmation via phone, in-app approval, or documentation.</li>
-        <li>Any listing without a clear landlord–agent link may be rejected or removed.</li>
-      </ul>
-
-      <h2>2. Service Fee Policy (No Viewing Fees)</h2>
-      <div class="highlight">
-        Viewing fees are strictly prohibited.
+  <!-- ── Hero ── -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="logo-row">
+        <div class="logo-icon">🏙️</div>
+        <span class="logo-name">LandNant</span>
       </div>
-      <ul>
-        <li>A service (success) fee is payable only when the tenant decides to occupy the house.</li>
-        <li>No payment must be requested before the client has made a decision.</li>
-        <li>The service fee must be declared upfront and agreed upon once.</li>
-        <li>No extra charges beyond the agreed amount are allowed.</li>
-        <li>If a tenant chooses to appreciate your service further, it must be voluntary and never requested.</li>
-      </ul>
-
-      <h2>3. Accurate & Honest Property Listings</h2>
-      <p>
-        We understand that moving around and showing houses for free can be frustrating.
-        To reduce unnecessary movements and protect your time:
-      </p>
-      <ul>
-        <li>Upload clear and recent photos of the entire house.</li>
-        <li>Include all rooms, toilets, kitchen, surroundings, and overall exterior.</li>
-        <li>Clearly show any faults, damages, or issues.</li>
-        <li>All images must reflect the actual house in its current condition.</li>
-      </ul>
-
-      <div class="warning">
-        Fake, misleading, edited, or unrelated photos are strictly prohibited.
-      </div>
-
-      <h2>4. Payment Conduct & Professional Ethics</h2>
-      <ul>
-        <li>Agents must behave professionally, respectfully, and honestly.</li>
-        <li>No pressure, misrepresentation, or fee manipulation is allowed.</li>
-        <li>Kindness matters — how you treat your first client determines your next one.</li>
-      </ul>
-
-      <h2>5. Ratings & Client Feedback</h2>
-      <ul>
-        <li>Clients can rate agents based on honesty, transparency, and overall experience.</li>
-        <li>Poor ratings and repeated complaints affect visibility and trust status.</li>
-        <li>Continued violations may lead to suspension or removal.</li>
-      </ul>
-
-      <h2>6. Reporting & Enforcement</h2>
-      <ul>
-        <li>Clients may report fake agents or violations at any time.</li>
-        <li>Once reported, your listings will be hidden immediately.</li>
-        <li>You will be contacted to respond or clarify.</li>
-        <li>If we do not hear from you within 3 days, further action will be taken.</li>
-      </ul>
-
-      <div class="warning">
-        Failure to respond may result in permanent deletion of your account and all listings.
-      </div>
-
-      <h2>7. Agent Discussion Forum</h2>
-      <ul>
-        <li>The app provides a discussion forum for agents.</li>
-        <li>This space is used to discuss fees, best practices, and policies.</li>
-        <li>Encouraging scams, hidden fees, or policy violations is not allowed.</li>
-      </ul>
-
-      <h2>8. Final Agreement</h2>
-      <p>
-        By continuing to use this platform as an agent, you confirm that you are genuine,
-        understand these terms, and agree to operate transparently and fairly.
-      </p>
-
-      <div class="highlight">
-        Our goal is simple: protect genuine agents, protect tenants, and clean up the rental market together.
-      </div>
-
-      <div class="footer">
-        © LandNant · All Rights Reserved
+      <div class="role-badge">🏢 Real Estate Agent</div>
+      <h1>Agent Terms &amp;<br>Conditions</h1>
+      <p class="lead">These terms exist to protect genuine agents, landlords, and tenants — and to build a rental market founded on transparency, honesty, and respect.</p>
+      <div class="meta-row">
+        <div class="meta-pill">📅 Effective: 2025</div>
+        <div class="meta-pill">🔏 Binding on registration</div>
+        <div class="meta-pill">🌍 All listed regions</div>
       </div>
     </div>
+  </div>
+
+  <!-- ── Content ── -->
+  <div class="page-wrap">
+
+    <!-- 1. Verification -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <h2 class="section-title">Agent Verification &amp; Landlord Relationship</h2>
+      </div>
+      <p class="body-text">Every agent must complete a verification process before listing any property on LandNant. This safeguards tenants and upholds the credibility of every listing on the platform.</p>
+      <ul class="styled">
+        <li>You must demonstrate that you are recognised, trusted, and explicitly authorised by the landlord to act on their behalf.</li>
+        <li>Authorisation may be verified via landlord confirmation call, in-app approval, or supporting documentation.</li>
+        <li>Any listing without a verifiable landlord–agent link will be rejected or removed without notice.</li>
+        <li>Impersonating a landlord or listing without authorisation is grounds for immediate account termination.</li>
+      </ul>
+      <div class="callout info">
+        <span class="callout-icon">ℹ️</span>
+        Verified agents receive a trust badge visible on all their listings — a direct signal of credibility to prospective tenants.
+      </div>
+    </div>
+
+    <!-- 2. Fee Policy -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <h2 class="section-title">Service Fee Policy — No Viewing Fees</h2>
+      </div>
+      <div class="callout warning">
+        <span class="callout-icon">🚫</span>
+        Viewing fees are strictly and unconditionally prohibited. Any agent found charging a viewing fee will face immediate suspension.
+      </div>
+      <ul class="styled">
+        <li>A service (success) fee is only payable once the tenant has made a confirmed decision to occupy the property.</li>
+        <li>No payment of any kind may be requested before the tenant has reached a decision.</li>
+        <li>Your service fee must be clearly declared upfront and agreed upon once — no surprise additions.</li>
+        <li>No charges beyond the agreed fee are permitted under any circumstance.</li>
+        <li>Any additional appreciation from a tenant must be entirely voluntary and must never be solicited by the agent.</li>
+      </ul>
+    </div>
+
+    <!-- 3. Listings -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <h2 class="section-title">Accurate &amp; Honest Property Listings</h2>
+      </div>
+      <p class="body-text">To reduce unnecessary site visits and protect your time as a professional, listings must be thorough, accurate, and current. Tenants deserve to know exactly what they are viewing before travelling.</p>
+
+      <div class="two-col">
+        <div class="mini-card">
+          <div class="mini-icon">📸</div>
+          <div class="mini-title">Photo Requirements</div>
+          <p>Upload recent, clear photos of every room, kitchen, bathroom, outdoor spaces, and the building exterior.</p>
+        </div>
+        <div class="mini-card">
+          <div class="mini-icon">🔍</div>
+          <div class="mini-title">Disclose Faults</div>
+          <p>Clearly photograph and describe any damages, defects, or issues. Hiding faults is a policy violation.</p>
+        </div>
+        <div class="mini-card">
+          <div class="mini-icon">📋</div>
+          <div class="mini-title">Accurate Details</div>
+          <p>Rent, size, location, and amenities must all match reality. Inflated or misleading descriptions are prohibited.</p>
+        </div>
+        <div class="mini-card">
+          <div class="mini-icon">🕐</div>
+          <div class="mini-title">Keep Listings Current</div>
+          <p>Remove or update listings immediately once a property is no longer available to prevent wasted viewings.</p>
+        </div>
+      </div>
+
+      <div class="callout warning">
+        <span class="callout-icon">⚠️</span>
+        Fake, misleading, digitally altered, or stock photos are strictly prohibited and will result in immediate listing removal and a formal strike against your account.
+      </div>
+    </div>
+
+    <!-- 4. Professional Conduct -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <h2 class="section-title">Professional Conduct &amp; Payment Ethics</h2>
+      </div>
+      <ul class="styled">
+        <li>Agents must conduct themselves professionally, respectfully, and honestly at all times.</li>
+        <li>Pressure tactics, misrepresentation of property details, or fee manipulation are strictly prohibited.</li>
+        <li>You represent both LandNant and the property owner — act accordingly.</li>
+        <li>Communications with tenants must remain civil, timely, and transparent.</li>
+      </ul>
+      <div class="callout tip">
+        <span class="callout-icon">💡</span>
+        Your reputation is your business. How you treat your first client determines your next one. Agents with strong ethics consistently earn better ratings and more referrals.
+      </div>
+    </div>
+
+    <!-- 5. Ratings -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <h2 class="section-title">Ratings &amp; Client Feedback</h2>
+      </div>
+      <p class="body-text">LandNant operates a transparent rating system to keep standards high and reward agents who go above and beyond.</p>
+      <ul class="styled">
+        <li>Tenants may rate agents on honesty, transparency, accuracy of listings, and overall experience after each interaction.</li>
+        <li>Low ratings and repeated complaints directly affect your search visibility and trust status on the platform.</li>
+        <li>Agents who consistently perform well unlock priority placement in search results.</li>
+        <li>Attempting to manipulate, purchase, or coerce ratings is a violation and will result in suspension.</li>
+      </ul>
+    </div>
+
+    <!-- 6. Reporting -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <h2 class="section-title">Reporting &amp; Enforcement</h2>
+      </div>
+      <ul class="styled">
+        <li>Any tenant or landlord may report a suspected policy violation at any time via the in-app report function.</li>
+        <li>Upon receiving a report, all your active listings will be hidden immediately pending review.</li>
+        <li>You will be contacted within 24 hours to provide your response or clarification.</li>
+        <li>If no response is received within 3 business days, further disciplinary action will be taken.</li>
+      </ul>
+      <div class="callout warning">
+        <span class="callout-icon">🚫</span>
+        Failure to respond, repeated violations, or confirmed fraudulent activity will result in permanent account deletion and removal of all listings with no right of appeal.
+      </div>
+    </div>
+
+    <!-- 7. Forum -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <h2 class="section-title">Agent Discussion Forum</h2>
+      </div>
+      <p class="body-text">LandNant provides an exclusive discussion space for verified agents to collaborate, share knowledge, and improve the profession collectively.</p>
+      <ul class="styled">
+        <li>Use the forum to discuss market trends, fee benchmarks, best practices, and platform policy updates.</li>
+        <li>Sharing knowledge that helps other agents operate more professionally is encouraged.</li>
+        <li>Promoting hidden fees, coordinating scams, encouraging policy violations, or sharing false information is strictly prohibited and will result in immediate removal from the forum and the platform.</li>
+      </ul>
+    </div>
+
+    <!-- 8. Final Agreement -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <h2 class="section-title">Final Agreement</h2>
+      </div>
+      <p class="body-text">By registering as an agent on LandNant, you confirm that you are a genuine, authorised representative, that you have read and understood these terms in full, and that you commit to operating with transparency, fairness, and professionalism at all times.</p>
+      <p class="body-text">These terms may be updated periodically. Continued use of the platform constitutes acceptance of any revisions.</p>
+      <div class="callout info">
+        <span class="callout-icon">🤝</span>
+        Our mission is clear: protect genuine agents, protect tenants, protect landlords — and together, build a rental market that works for everyone.
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-card">
+      <h3>You're joining a trusted network.</h3>
+      <p>LandNant is committed to making the rental market fair, transparent, and safe for every party involved. Welcome aboard.</p>
+      <div class="footer-meta">© LandNant · All Rights Reserved · Agent Terms v1.0</div>
+    </div>
+
   </div>
 </body>
 </html>
