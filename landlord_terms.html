@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landlord Terms & Conditions — LandNant</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold:         #C9A84C;
+      --gold-dark:    #a07a28;
+      --gold-light:   #FFF8E6;
+      --navy:         #0D1B2A;
+      --teal:         #00897B;
+      --surface:      #F5F3EE;
+      --card:         #FFFFFF;
+      --border:       #EDE8DC;
+      --text-primary: #0D1B2A;
+      --text-sec:     #5C5342;
+      --success:      #2E7D32;
+      --success-bg:   #E8F5E9;
+      --danger:       #C62828;
+      --danger-bg:    #FFEBEE;
+      --info:         #1565C0;
+      --info-bg:      #E3F2FD;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--surface);
+      color: var(--text-primary);
+      line-height: 1.75;
+    }
+
+    /* ── Hero Header ── */
+    .hero {
+      background: linear-gradient(135deg, #1A1100 0%, #3D2B00 50%, #6B4A00 100%);
+      padding: 56px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 300px; height: 300px;
+      background: rgba(201,168,76,0.1);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -50px;
+      width: 220px; height: 220px;
+      background: rgba(201,168,76,0.06);
+      border-radius: 50%;
+    }
+
+    /* Gold shimmer line at top */
+    .hero-shimmer {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: rgba(201,168,76,0.2);
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+
+    .logo-name {
+      color: rgba(255,255,255,0.95);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(201,168,76,0.18);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 5vw, 42px);
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      font-weight: 400;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero p.lead {
+      color: rgba(255,255,255,0.72);
+      font-size: 15.5px;
+      max-width: 560px;
+      font-weight: 300;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .meta-pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 6px 14px;
+      color: rgba(255,255,255,0.82);
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    /* ── Layout ── */
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+      position: relative;
+      margin-top: -40px;
+    }
+
+    /* ── Section Card ── */
+    .card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.45s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.10s; }
+    .card:nth-child(3) { animation-delay: 0.15s; }
+    .card:nth-child(4) { animation-delay: 0.20s; }
+    .card:nth-child(5) { animation-delay: 0.25s; }
+    .card:nth-child(6) { animation-delay: 0.30s; }
+    .card:nth-child(7) { animation-delay: 0.35s; }
+    .card:nth-child(8) { animation-delay: 0.40s; }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-num {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: var(--gold-light);
+      color: var(--gold-dark);
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: var(--text-primary);
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    p.body-text {
+      color: var(--text-sec);
+      font-size: 14.5px;
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    ul.styled {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0;
+    }
+
+    ul.styled li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text-sec);
+      font-size: 14.5px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    ul.styled li:last-child { border-bottom: none; }
+
+    ul.styled li::before {
+      content: '✓';
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      background: var(--success-bg);
+      color: var(--success);
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+    }
+
+    /* ── Callout Blocks ── */
+    .callout {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 16px 0;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+    .callout.info {
+      background: var(--gold-light);
+      border-left: 4px solid var(--gold);
+      color: #5C3D00;
+    }
+
+    .callout.warning {
+      background: var(--danger-bg);
+      border-left: 4px solid var(--danger);
+      color: #7B1515;
+    }
+
+    .callout.tip {
+      background: var(--success-bg);
+      border-left: 4px solid var(--teal);
+      color: #1B4B20;
+    }
+
+    .callout.blue {
+      background: var(--info-bg);
+      border-left: 4px solid var(--info);
+      color: #0D2B6B;
+    }
+
+    /* ── Rights Table ── */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .right-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .right-item .ri-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .right-item .ri-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .right-item p {
+      font-size: 12.5px;
+      color: var(--text-sec);
+      line-height: 1.5;
+    }
+
+    /* ── Footer ── */
+    .footer-card {
+      background: linear-gradient(135deg, #1A1100, #3D2B00);
+      border-radius: 20px;
+      padding: 36px;
+      text-align: center;
+      margin-top: 24px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .footer-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .footer-card h3 {
+      font-family: 'DM Serif Display', serif;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .footer-card p {
+      color: rgba(255,255,255,0.65);
+      font-size: 13.5px;
+      max-width: 480px;
+      margin: 0 auto 20px;
+      line-height: 1.65;
+    }
+
+    .footer-meta {
+      color: rgba(255,255,255,0.35);
+      font-size: 12px;
+      margin-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 24px 20px; }
+      .rights-grid { grid-template-columns: 1fr; }
+      .meta-row { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Hero ── -->
+  <div class="hero">
+    <div class="hero-shimmer"></div>
+    <div class="hero-inner">
+      <div class="logo-row">
+        <div class="logo-icon">🏙️</div>
+        <span class="logo-name">LandNant</span>
+      </div>
+      <div class="role-badge">🏠 Landlord</div>
+      <h1>Landlord Terms &amp;<br><span>Conditions</span></h1>
+      <p class="lead">These terms outline your rights, responsibilities, and commitments as a property owner on LandNant — so you can list with confidence and let with trust.</p>
+      <div class="meta-row">
+        <div class="meta-pill">📅 Effective: 2025</div>
+        <div class="meta-pill">🔏 Binding on registration</div>
+        <div class="meta-pill">🌍 All listed regions</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Content ── -->
+  <div class="page-wrap">
+
+    <!-- 1. Eligibility -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <h2 class="section-title">Eligibility &amp; Property Ownership</h2>
+      </div>
+      <p class="body-text">Only genuine property owners or those with a documented legal right to let a property may list on LandNant as a Landlord. You are personally responsible for the accuracy of your ownership claim.</p>
+      <ul class="styled">
+        <li>You must be the legal owner of the property or hold an authorised right to let it (e.g. a head lease, power of attorney).</li>
+        <li>LandNant may request proof of ownership or authority at any time during the listing process or after a complaint.</li>
+        <li>Listing a property you do not own or have no right to let is fraud and will result in permanent removal and potential legal referral.</li>
+        <li>You may appoint a verified LandNant agent to list on your behalf — but you remain ultimately responsible for the listing's accuracy.</li>
+      </ul>
+      <div class="callout blue">
+        <span class="callout-icon">ℹ️</span>
+        If you choose to list through an agent, ensure they are verified on the platform. You can confirm an agent's verified status directly in the app before granting them access to your listings.
+      </div>
+    </div>
+
+    <!-- 2. Listing Standards -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <h2 class="section-title">Property Listing Standards</h2>
+      </div>
+      <p class="body-text">Tenants make significant life decisions based on your listing. Every detail must be accurate, honest, and current.</p>
+      <ul class="styled">
+        <li>Upload clear, recent photographs of all rooms, bathrooms, kitchen, outdoor areas, and the full exterior of the property.</li>
+        <li>Clearly disclose any known faults, ongoing repairs, or defects — hiding them is a violation of these terms.</li>
+        <li>Rent amount, property size, location, available date, and included amenities must all reflect reality.</li>
+        <li>Remove or deactivate your listing immediately once the property is no longer available.</li>
+        <li>Do not copy listings from other platforms or use stock/AI-generated images.</li>
+      </ul>
+      <div class="callout warning">
+        <span class="callout-icon">⚠️</span>
+        Misleading, falsified, or outdated listings damage tenant trust and the platform. They will be removed immediately, and repeated violations result in account suspension.
+      </div>
+    </div>
+
+    <!-- 3. Rent & Payments -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <h2 class="section-title">Rent, Deposits &amp; Payment Conduct</h2>
+      </div>
+      <ul class="styled">
+        <li>All rental prices listed must be your genuine asking price — no bait-and-switch pricing is permitted.</li>
+        <li>Any deposit requirements must be disclosed upfront in the listing, including the amount and refund conditions.</li>
+        <li>Deposits must be managed fairly — clear conditions for deductions and timely return of deposits are expected.</li>
+        <li>You may not request payment outside of what is agreed and clearly disclosed at the time of listing.</li>
+        <li>Any change to the agreed rent before occupancy must be communicated transparently and consented to by the tenant.</li>
+      </ul>
+      <div class="callout info">
+        <span class="callout-icon">💛</span>
+        Landlords who operate transparently and fairly consistently attract better tenants and earn higher platform trust scores — which increases your listing's visibility.
+      </div>
+    </div>
+
+    <!-- 4. Landlord Rights -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <h2 class="section-title">Your Rights as a Landlord</h2>
+      </div>
+      <p class="body-text">LandNant is built to serve landlords as much as tenants. Here is what you are entitled to as a registered landlord on the platform:</p>
+      <div class="rights-grid">
+        <div class="right-item">
+          <div class="ri-icon">📊</div>
+          <div>
+            <div class="ri-title">Listing Control</div>
+            <p>Full control to create, edit, deactivate, or delete your listings at any time.</p>
+          </div>
+        </div>
+        <div class="right-item">
+          <div class="ri-icon">🔎</div>
+          <div>
+            <div class="ri-title">Tenant Screening</div>
+            <p>View tenant profiles and ratings before accepting an enquiry or granting a viewing.</p>
+          </div>
+        </div>
+        <div class="right-item">
+          <div class="ri-icon">🚩</div>
+          <div>
+            <div class="ri-title">Report Bad Actors</div>
+            <p>Report tenants, agents, or users who violate platform conduct at any time.</p>
+          </div>
+        </div>
+        <div class="right-item">
+          <div class="ri-icon">🤝</div>
+          <div>
+            <div class="ri-title">Agent Delegation</div>
+            <p>Authorise a verified LandNant agent to manage your listing on your behalf.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Conduct with Tenants -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <h2 class="section-title">Conduct with Prospective Tenants</h2>
+      </div>
+      <ul class="styled">
+        <li>Respond to genuine tenant enquiries promptly and courteously — unanswered enquiries affect your response rating.</li>
+        <li>Discrimination on the basis of race, religion, nationality, gender, disability, or any other protected characteristic is strictly prohibited and illegal.</li>
+        <li>You may set your own legitimate tenant criteria (e.g. employment status, number of occupants) as long as these do not constitute illegal discrimination.</li>
+        <li>Do not share personal tenant information with third parties or use it for purposes beyond the letting process.</li>
+      </ul>
+      <div class="callout tip">
+        <span class="callout-icon">✅</span>
+        A good landlord–tenant relationship starts at first contact. Clear communication and fair treatment lead to longer tenancies and fewer disputes.
+      </div>
+    </div>
+
+    <!-- 6. Reporting & Enforcement -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <h2 class="section-title">Reporting &amp; Enforcement</h2>
+      </div>
+      <p class="body-text">LandNant enforces these terms actively to protect all parties on the platform.</p>
+      <ul class="styled">
+        <li>Tenants or agents may file reports against a landlord at any time through the in-app reporting tool.</li>
+        <li>On receiving a substantiated report, your listing(s) may be temporarily hidden while a review is conducted.</li>
+        <li>You will be contacted and given an opportunity to respond within 3 business days.</li>
+        <li>If the violation is confirmed, actions range from a formal warning to permanent account removal depending on severity.</li>
+      </ul>
+      <div class="callout warning">
+        <span class="callout-icon">🚫</span>
+        Confirmed fraudulent listings, identity misrepresentation, or illegal letting activity will result in immediate permanent account termination and may be referred to relevant authorities.
+      </div>
+    </div>
+
+    <!-- 7. Platform Rules -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <h2 class="section-title">General Platform Rules</h2>
+      </div>
+      <ul class="styled">
+        <li>You may not circumvent the platform by directing tenants to communicate or transact outside of LandNant to avoid platform oversight.</li>
+        <li>Creating multiple accounts to manipulate ratings or bypass a suspension is strictly prohibited.</li>
+        <li>These terms may be revised periodically — continued use of the platform constitutes acceptance of any updates.</li>
+        <li>LandNant reserves the right to modify, suspend, or terminate any listing or account that violates these terms or local law.</li>
+      </ul>
+    </div>
+
+    <!-- 8. Final Agreement -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <h2 class="section-title">Final Agreement</h2>
+      </div>
+      <p class="body-text">By registering as a Landlord on LandNant, you confirm that you are a legitimate property owner or authorised lettings representative, that you have read and fully understood these terms, and that you commit to conducting your lettings activity with honesty, fairness, and professionalism.</p>
+      <div class="callout info">
+        <span class="callout-icon">🏠</span>
+        LandNant exists to connect good landlords with good tenants — and to make renting a dignified, trustworthy experience for everyone involved. Thank you for being part of that mission.
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-card">
+      <h3>Your property. Our platform. Shared trust.</h3>
+      <p>LandNant is committed to protecting landlords who operate with integrity. List with confidence — we've got your back.</p>
+      <div class="footer-meta">© LandNant · All Rights Reserved · Landlord Terms v1.0</div>
+    </div>
+
+  </div>
+</body>
+</html>
